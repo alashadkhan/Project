@@ -20,7 +20,10 @@ env:
 jobs:
   verify:
     name: Lint, types, tests, build
-    runs-on: ubuntu-latest
+    # Pinned LTS image rather than `ubuntu-latest`: Playwright's dependency
+    # installer is tied to specific distro releases, and a silent runner upgrade
+    # must not break a build that is unrelated to the code.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
@@ -59,7 +62,7 @@ jobs:
 
   e2e:
     name: Playwright and axe
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:

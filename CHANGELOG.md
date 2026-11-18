@@ -52,6 +52,11 @@ First public release, built for **PromptWars x Agent X 2.0**, problem statement
 - The browser suite now runs against the production build with `RATE_LIMIT_MAX=100`, and the
   short-input assertion scopes its `role="alert"` lookup so Next.js's route announcer no longer
   causes a strict-mode match.
+- Depth radios are `sr-only`, so the specs click the visible label card and assert the input is
+  checked; the cards also gained a `:focus-visible` ring, which they were missing for keyboard use.
+- Upgraded `@playwright/test` to 1.65.1 and pinned CI to `ubuntu-24.04`: the first
+  hosted run failed inside `npx playwright install --with-deps chromium`, not in any
+  spec, which pointed at the runner image rather than the test suite.
 
 ### Known limitations
 
