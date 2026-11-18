@@ -1,0 +1,19 @@
+# Render blueprint (fallback host if Cloud Run is unavailable).
+# New > Blueprint > select this repository. Set GEMINI_API_KEY when prompted.
+services:
+  - type: web
+    name: veritas
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: RETRIEVAL_ALLOWED_HOSTS
+        value: en.wikipedia.org
+      - key: GEMINI_API_KEY
+        sync: false

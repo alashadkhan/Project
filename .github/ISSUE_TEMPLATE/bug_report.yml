@@ -1,0 +1,60 @@
+name: Bug report
+description: Something in Veritas behaved differently from what the docs describe
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Do **not** paste API keys, tokens, or personal data.
+        Use the mock provider (`AI_PROVIDER=mock`) when reproducing if you can.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: The observed behaviour, including the verdict or error message you saw.
+      placeholder: A run on the claim "…" returned "…" but the sources say "…".
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: input
+    id: claim
+    attributes:
+      label: Claim and depth
+      description: The exact claim text and the depth you selected.
+      placeholder: "Octopuses have three hearts. — standard"
+
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider
+      options:
+        - mock (deterministic, no key)
+        - gemini (live model)
+        - deployed on Cloud Run
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, browser, and whether it was local or the deployed URL.
+      placeholder: Windows 11, Node 22, Chrome 141, local `npm run dev`
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed secrets and personal data from this report.
+          required: true
